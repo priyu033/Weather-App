@@ -45,7 +45,7 @@ A modern and interactive Weather App that provides real-time weather updates, fu
 
 ## Project Demonstration
 
-- **Live Demo**: [Your Deployed Link](https://your-live-demo.com)
+- **Live Demo**: https://weather-app-priyanka.netlify.app/
 - **Screenshots**:
 ![img1](https://github.com/user-attachments/assets/7e348ba5-49bd-4781-a917-461e6174f8d6)
 ![Screenshot 2025-03-18 023033](https://github.com/user-attachments/assets/316b7a46-eccc-45fe-88b8-9a1a74e7a260)
