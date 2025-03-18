@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-  setCompletelyRandomBackground(); // 🌟 Show a new image every time the page loads
+  setCompletelyRandomBackground(); //  Show a new image every time the page loads
   showRandomWeatherFact(); // Show facts while loading
   getUserLocation(); // Ask for location on page load
 });
 
-// 🌟 Fetch a new Unsplash image every time the page loads
+//  Fetch a new Unsplash image every time the page loads
 async function setCompletelyRandomBackground() {
-  const ACCESS_KEY = "2W57kezLohoZjhQ5nsYqD6fEdg8rOTfVFKA-_35yoVk";
-  const url = `https://api.unsplash.com/photos/random?query=nature,sky,landscape&orientation=landscape&client_id=${ACCESS_KEY}&timestamp=${new Date().getTime()}`;
+  const ACCESS_KEY = "YOUR_ACCESS_KEY"; // Replace with your Unsplash API key
+  const url = 'https://api.unsplash.com/photos/random?query=nature,sky,landscape&orientation=landscape&client_id=${ACCESS_KEY}&timestamp=${new Date().getTime()}';
 
   try {
       const response = await fetch(url);
@@ -23,22 +23,22 @@ async function setCompletelyRandomBackground() {
 
 // 🌟 Fetch a new background from Unsplash based on city & weather
 async function updateBackground(city, weather) {
-  const ACCESS_KEY = "2W57kezLohoZjhQ5nsYqD6fEdg8rOTfVFKA-_35yoVk";
-  const query = `${city} ${weather}`;
-  const url = `https://api.unsplash.com/photos/random?query=${query}&orientation=landscape&client_id=${ACCESS_KEY}&timestamp=${new Date().getTime()}`;
+  const ACCESS_KEY = "YOUR_ACCESS_KEY";  // Replace with your Unsplash API key
+  const query = '${city} ${weather}';
+  const url = 'https://api.unsplash.com/photos/random?query=${query}&orientation=landscape&client_id=${ACCESS_KEY}&timestamp=${new Date().getTime()}';
 
   try {
       const response = await fetch(url);
       if (!response.ok) throw new Error("Unsplash API error");
 
       const data = await response.json();
-      document.body.style.backgroundImage = `url('${data.urls.regular}')`;
+      document.body.style.backgroundImage = 'url('${data.urls.regular}')';
   } catch (error) {
       console.error("Error fetching weather-based Unsplash image:", error);
   }
 }
 
-// 🌟 Fun weather facts while loading
+//  Fun weather facts while loading
 const weatherFacts = [
   "Did you know? The highest temperature ever recorded was 56.7°C in Death Valley!",
   "Lightning is 5 times hotter than the surface of the sun!",
@@ -49,17 +49,17 @@ const weatherFacts = [
   "The fastest recorded wind speed on Earth was 372 km/h (231 mph) in Mount Washington, USA!"
 ];
 
-// 🌟 Show a random weather fact while loading
+//  Show a random weather fact while loading
 function showRandomWeatherFact() {
   const fact = weatherFacts[Math.floor(Math.random() * weatherFacts.length)];
-  document.querySelector(".weather").innerHTML = `
+  document.querySelector(".weather").innerHTML = '
       <div class="loading-animation"></div>
       <p class="loading-text">Loading...</p>
       <p class="loading-fact">${fact}</p>
-  `;
+  ';
 }
 
-// 🌟 Get user's location
+//  Get user's location
 function getUserLocation() {
   if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser.");
@@ -79,23 +79,23 @@ function getUserLocation() {
   );
 }
 
-// 🌟 Fetch weather by coordinates
+//  Fetch weather by coordinates
 function fetchWeatherByCoords(lat, lon) {
   fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${weather.apiKey}`
+      'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${weather.apiKey}'
   )
       .then((response) => response.json())
       .then((data) => weather.displayWeather(data));
 }
 
-// 🌟 Weather object
+//  Weather object
 let weather = {
-  apiKey: "5598488442dd5891f6233cdcabdfe9d2",
+  apiKey: "YOUR_API_KEY"; // Replace with your openweather API key",
 
   fetchWeather: function (city) {
       showRandomWeatherFact(); // Show a fact while fetching
       fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.apiKey}`
+          'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.apiKey}'
       )
           .then((response) => response.json())
           .then((data) => this.displayWeather(data));
@@ -136,12 +136,12 @@ let weather = {
   },
 };
 
-// 🌟 Handle search button click
+//  Handle search button click
 document.querySelector(".search button").addEventListener("click", function () {
   weather.search();
 });
 
-// 🌟 Handle "Enter" key in search bar
+//  Handle "Enter" key in search bar
 document.querySelector(".search-bar").addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
       weather.search();
